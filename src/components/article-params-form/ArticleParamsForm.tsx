@@ -33,7 +33,7 @@ export const ArticleParamsForm = ({
 
 	useOutsideClickClose({ isOpen, rootRef: asideRef, onChange: setIsOpen });
 
-	const { articlFormStyles, handleChange, handleSubmitForm, handleResetForm } =
+	const { articleFormStyles, handleChange, handleSubmitForm, handleResetForm } =
 		useArticleParamsForm({ articleStyles, setArticleStyles });
 
 	return (
@@ -53,7 +53,7 @@ export const ArticleParamsForm = ({
 					</Text>
 					<Select
 						options={fontFamilyOptions}
-						selected={articlFormStyles.fontFamilyOption}
+						selected={articleFormStyles.fontFamilyOption}
 						onChange={(option) => handleChange(option, 'fontFamilyOption')}
 						title='Шрифт'
 					/>
@@ -61,26 +61,26 @@ export const ArticleParamsForm = ({
 						title='Размер шрифта'
 						name='Размеры шрифта'
 						options={fontSizeOptions}
-						selected={articlFormStyles.fontSizeOption}
+						selected={articleFormStyles.fontSizeOption}
 						onChange={(option) => handleChange(option, 'fontSizeOption')}
 					/>
 					<Select
 						title='Цвет шрифта'
 						options={fontColors}
-						selected={articlFormStyles.fontColor}
+						selected={articleFormStyles.fontColor}
 						onChange={(option) => handleChange(option, 'fontColor')}
 					/>
 					<Separator />
 					<Select
 						title='Цвет фона'
 						options={backgroundColors}
-						selected={articlFormStyles.backgroundColor}
+						selected={articleFormStyles.backgroundColor}
 						onChange={(option) => handleChange(option, 'backgroundColor')}
 					/>
 					<Select
 						title='Ширина контента'
 						options={contentWidthArr}
-						selected={articlFormStyles.contentWidth}
+						selected={articleFormStyles.contentWidth}
 						onChange={(option) => handleChange(option, 'contentWidth')}
 					/>
 					<div className={styles.bottomContainer}>

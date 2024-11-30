@@ -14,27 +14,27 @@ export const useArticleParamsForm = ({
 	articleStyles,
 	setArticleStyles,
 }: useArticleParamsFormProps) => {
-	const [articlFormStyles, setArticlFormStyles] = useState(articleStyles);
+	const [articleFormStyles, setArticleFormStyles] = useState(articleStyles);
 
 	const handleChange = (option: OptionType, filedName: string) =>
-		setArticlFormStyles({
-			...articlFormStyles,
+		setArticleFormStyles({
+			...articleFormStyles,
 			[filedName]: option,
 		});
 
 	const handleSubmitForm = (evt: React.FormEvent) => {
 		evt.preventDefault();
-		setArticleStyles(articlFormStyles);
+		setArticleStyles(articleFormStyles);
 	};
 
 	const handleResetForm = (evt: React.FormEvent) => {
 		evt.preventDefault();
 		setArticleStyles(defaultArticleState);
-		setArticlFormStyles(defaultArticleState);
+		setArticleFormStyles(defaultArticleState);
 	};
 
 	return {
-		articlFormStyles,
+		articleFormStyles,
 		handleChange,
 		handleSubmitForm,
 		handleResetForm,
