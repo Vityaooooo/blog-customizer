@@ -1,36 +1,40 @@
 import { useState } from 'react';
-import { ArticleStateType, OptionType } from 'src/constants/articleProps';
+import {
+	ArticleStateType,
+	OptionType,
+	defaultArticleState,
+} from 'src/constants/articleProps';
 
 type useArticleParamsFormProps = {
-	articleStyleState: ArticleStateType;
-	setArticleStyle: (newState: ArticleStateType) => void;
+	articleStyles: ArticleStateType;
+	setArticleStyles: (newState: ArticleStateType) => void;
 };
 
 export const useArticleParamsForm = ({
-	articleStyleState,
-	setArticleStyle,
+	articleStyles,
+	setArticleStyles,
 }: useArticleParamsFormProps) => {
-	const [ArticleParamsFormStyle, setArticleParamsFormStyle] =
-		useState(articleStyleState);
+	const [articlFormStyles, setArticlFormStyles] = useState(articleStyles);
 
 	const handleChange = (option: OptionType, filedName: string) =>
-		setArticleParamsFormStyle({
-			...ArticleParamsFormStyle,
+		setArticlFormStyles({
+			...articlFormStyles,
 			[filedName]: option,
 		});
 
 	const handleSubmitForm = (evt: React.FormEvent) => {
 		evt.preventDefault();
-		setArticleStyle(ArticleParamsFormStyle);
+		setArticleStyles(articlFormStyles);
 	};
 
 	const handleResetForm = (evt: React.FormEvent) => {
 		evt.preventDefault();
-		setArticleParamsFormStyle(articleStyleState);
+		setArticleStyles(defaultArticleState);
+		setArticlFormStyles(defaultArticleState);
 	};
 
 	return {
-		ArticleParamsFormStyle,
+		articlFormStyles,
 		handleChange,
 		handleSubmitForm,
 		handleResetForm,

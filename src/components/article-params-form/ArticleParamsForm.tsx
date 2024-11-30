@@ -20,25 +20,21 @@ import { useArticleParamsForm } from './hooks/useArticleParamsForm';
 import { useOutsideClickClose } from 'src/ui/select/hooks/useOutsideClickClose';
 
 type ArticleParamsFormProps = {
-	articleStyleState: ArticleStateType;
-	setArticleStyle: (newState: ArticleStateType) => void;
+	articleStyles: ArticleStateType;
+	setArticleStyles: (newState: ArticleStateType) => void;
 };
 
 export const ArticleParamsForm = ({
-	articleStyleState,
-	setArticleStyle,
+	articleStyles,
+	setArticleStyles,
 }: ArticleParamsFormProps) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const asideRef = useRef<HTMLDivElement | null>(null);
 
 	useOutsideClickClose({ isOpen, rootRef: asideRef, onChange: setIsOpen });
 
-	const {
-		ArticleParamsFormStyle,
-		handleChange,
-		handleSubmitForm,
-		handleResetForm,
-	} = useArticleParamsForm({ articleStyleState, setArticleStyle });
+	const { articlFormStyles, handleChange, handleSubmitForm, handleResetForm } =
+		useArticleParamsForm({ articleStyles, setArticleStyles });
 
 	return (
 		<>
@@ -57,7 +53,7 @@ export const ArticleParamsForm = ({
 					</Text>
 					<Select
 						options={fontFamilyOptions}
-						selected={ArticleParamsFormStyle.fontFamilyOption}
+						selected={articlFormStyles.fontFamilyOption}
 						onChange={(option) => handleChange(option, 'fontFamilyOption')}
 						title='Шрифт'
 					/>
@@ -65,26 +61,26 @@ export const ArticleParamsForm = ({
 						title='Размер шрифта'
 						name='Размеры шрифта'
 						options={fontSizeOptions}
-						selected={ArticleParamsFormStyle.fontSizeOption}
+						selected={articlFormStyles.fontSizeOption}
 						onChange={(option) => handleChange(option, 'fontSizeOption')}
 					/>
 					<Select
 						title='Цвет шрифта'
 						options={fontColors}
-						selected={ArticleParamsFormStyle.fontColor}
+						selected={articlFormStyles.fontColor}
 						onChange={(option) => handleChange(option, 'fontColor')}
 					/>
 					<Separator />
 					<Select
 						title='Цвет фона'
 						options={backgroundColors}
-						selected={ArticleParamsFormStyle.backgroundColor}
+						selected={articlFormStyles.backgroundColor}
 						onChange={(option) => handleChange(option, 'backgroundColor')}
 					/>
 					<Select
 						title='Ширина контента'
 						options={contentWidthArr}
-						selected={ArticleParamsFormStyle.contentWidth}
+						selected={articlFormStyles.contentWidth}
 						onChange={(option) => handleChange(option, 'contentWidth')}
 					/>
 					<div className={styles.bottomContainer}>
