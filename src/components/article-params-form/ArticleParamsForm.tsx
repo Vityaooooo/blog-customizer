@@ -28,10 +28,14 @@ export const ArticleParamsForm = ({
 	articleStyles,
 	setArticleStyles,
 }: ArticleParamsFormProps) => {
-	const [isOpen, setIsOpen] = useState(false);
+	const [isMenuOpen, setisMenuOpen] = useState(false);
 	const asideRef = useRef<HTMLDivElement | null>(null);
 
-	useOutsideClickClose({ isOpen, rootRef: asideRef, onChange: setIsOpen });
+	useOutsideClickClose({
+		isOpen: isMenuOpen,
+		rootRef: asideRef,
+		onChange: setisMenuOpen,
+	});
 
 	const { articleFormStyles, handleChange, handleSubmitForm, handleResetForm } =
 		useArticleParamsForm({ articleStyles, setArticleStyles });
@@ -39,14 +43,16 @@ export const ArticleParamsForm = ({
 	return (
 		<>
 			<ArrowButton
-				isOpen={isOpen}
+				isOpen={isMenuOpen}
 				onClick={() => {
-					setIsOpen((prevState) => !prevState);
+					setisMenuOpen((prevState) => !prevState);
 				}}
 			/>
 			<aside
 				ref={asideRef}
-				className={clsx(styles.container, { [styles.container_open]: isOpen })}>
+				className={clsx(styles.container, {
+					[styles.container_open]: isMenuOpen,
+				})}>
 				<Form onSubmit={handleSubmitForm} onReset={handleResetForm}>
 					<Text size={31} weight={800} uppercase align='left'>
 						Задайте параметры
